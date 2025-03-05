@@ -1,0 +1,110 @@
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.9; }
+    100% { opacity: 1; }
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #222;
+    margin: 0;
+}
+
+.neon-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.neon-box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 4px solid transparent;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.neon-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 4px solid #ff5e5e;
+    border-radius: 10px;
+    filter: blur(8px);
+    animation: flicker 1.5s infinite alternate;
+}
+
+.neon-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 4px solid rgba(255, 94, 94, 0.5);
+    border-radius: 10px;
+    filter: blur(16px);
+}
+
+.neon-text {
+    display: flex;
+    gap: 10px;
+    position: relative;
+}
+
+.one, .zero {
+    display: inline-block;
+    position: relative;
+}
+
+.one {
+    width: 4px;
+    height: 80px;
+    background: #ff5e5e;
+    position: relative;
+}
+
+.one::before, .zero::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff5e5e;
+    filter: blur(8px);
+    animation: flicker 1.5s infinite alternate;
+}
+
+.one::after, .zero::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 94, 94, 0.5);
+    filter: blur(16px);
+}
+
+.zero {
+    width: 50px;
+    height: 80px;
+    border: 4px solid #ff5e5e;
+    border-radius: 40px;
+    background: transparent;
+}
+
+.zero::before {
+    border-radius: 40px;
+}
+
+.zero::after {
+    border-radius: 40px;
+}
